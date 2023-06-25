@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Refactoring of your old code. Growth as a software engineer.
+title: Refactoring. Growth.
 ---
 
 During a software engineer career, everybody faces the problem of dealing with the code they've written a long time ago. So was I. And recently this happened to me. 
