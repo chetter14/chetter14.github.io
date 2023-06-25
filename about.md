@@ -9,5 +9,7 @@ Hi, I am Artem Leshchukov and I am 20 years old. I am 3rd year student at [Samar
 ### Contact me
 
 Gmail: artemleshchukov02@gmail.com
+
 [LinkedIn](https://www.linkedin.com/in/artem-leshchukov/)
+
 [GitHub](https://github.com/artem-leshchukov)
