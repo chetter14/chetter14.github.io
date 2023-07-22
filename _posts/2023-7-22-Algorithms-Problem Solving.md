@@ -21,8 +21,8 @@ Back to the topic. So eventually, for all the tasks I've worked on, *I understan
 any step. And nonetheless I can't solve it one more time!* I have to go all the way up from scratch again (most of the time, and also 
 during the process of reflecting on tasks old memories may raise).
 
-But this rule doesn't work for algorithms and tasks you face frequently. It's obvious because you just better and better remember the 
-problem solution you handle the most often.
+But this rule doesn't work for algorithms and tasks you face frequently. It's obvious because you just remember better and better the
+solution to the problem you handle the most often.
 
 As a result, a conclusion I came to: **do not try to remember all the algorithms you encounter** (although some people are naturally good 
 at it). **Try to understand how to solve the problem**. This way you learn a problem-solving skill. Don't worry whether you will remember
