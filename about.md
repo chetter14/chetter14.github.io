@@ -10,6 +10,6 @@ Hi, I am Artem Leshchukov and I am 21 years old. I am 4th year student at [Samar
 
 Gmail: artemleshchukov02@gmail.com
 
-[LinkedIn](https://www.linkedin.com/in/artem-leshchukov/)
+[LinkedIn](https://www.linkedin.com/in/chetter14/)
 
-[GitHub](https://github.com/artem-leshchukov)
+[GitHub](https://github.com/chetter14)
