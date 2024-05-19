@@ -1,3 +1,8 @@
+---
+layout: post
+title: Code readability.
+---
+
 Recently I've encountered something incredibly amazing and at the same time straighforward and explicit. I was doing my job (yeah, it is) - writing software. And after completing assigned tasks the chief made a code review of my *work of art*.
 
 It was as always. Like, I was advised to put this piece of code into function, make a variable of another type here, modify a logic of code a bit in that place to better suit the requirements, etc. The code I was working on was challenging, requiring deep and meticulous logic, numerous function calls and accurate flow conditions. And we get to the moment when my entire world *transformed from 'before' to 'after'*. 
