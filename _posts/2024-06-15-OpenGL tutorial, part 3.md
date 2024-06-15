@@ -11,8 +11,8 @@ At first, to apply this math to OpenGL I've added *GLM* (Open**GL** **M**athemat
 
 Then I created a *"transformation"* matrix. This matrix *"contains" all the required operations (and values for them) that I want to apply to the vertices' coordinates*. An example:
 ```
-glm::mat4 trans1 = glm::mat4(1.0f);													// initialize an identity matrix
-trans1 = glm::translate(trans1, glm::vec3(0.5f, -0.5f, 0.0f));						// tell the matrix that I want to move coordinates to 0.5 right and 0.5 down
+glm::mat4 trans1 = glm::mat4(1.0f);							// initialize an identity matrix
+trans1 = glm::translate(trans1, glm::vec3(0.5f, -0.5f, 0.0f));				// tell the matrix that I want to move coordinates to 0.5 right and 0.5 down
 trans1 = glm::rotate(trans1, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));	// tell the matrix to rotate around Z-axis on *glfwGetTime()* radians
 ```
 After that I've changed a vertex shader. Now I have to take the transformation matrix into account:
@@ -64,7 +64,7 @@ myShader.setTransformMatrix("view", view);
 Then I've added *a **perspective projection matrix** (not the orthographic one) to see objects in distance smaller than those that are closer*:
 ```
 glm::mat4 projection;	
-projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);		// set FOV to 45.0, aspect ratio to 4/3
+projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);	// set FOV to 45.0, aspect ratio to 4/3
 myShader.setTransformMatrix("projection", projection);
 ```
 
@@ -108,12 +108,12 @@ void mouseCallback(GLFWwindow*, double xpos, double ypos)
 	xoffset *= mouseSensitivity;			// multiply by coef < 1.0 
 	yoffset *= mouseSensitivity;			// so that mouse movement wouldn't be so rapid
 
-	yaw += xoffset;							// yaw - right/left rotation
-	pitch += yoffset;						// pitch - up/down rotation
+	yaw += xoffset;					// yaw - right/left rotation
+	pitch += yoffset;				// pitch - up/down rotation
 
-	if (pitch > 89.0f)						// can't look further up than 89 degrees
+	if (pitch > 89.0f)				// can't look further up than 89 degrees
 		pitch = 89.0f;
-	else if (pitch < -89.0f)				// and further down than -89 degrees
+	else if (pitch < -89.0f)			// and further down than -89 degrees
 		pitch = -89.0f;
 
 	glm::vec3 direction;					// calculate the direction camera will look at after mouse movements
@@ -160,7 +160,7 @@ void scrollCallback(GLFWwindow*, double xoffset, double yoffset)
 {
 	fov -= (float)yoffset;
 	if (fov < 1.0f)
-		fov = 1.0f;				// can't look narrower
+		fov = 1.0f;			// can't look narrower
 	else if (fov > 45.0f)
 		fov = 45.0f;			// can't look wider
 }
