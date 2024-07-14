@@ -3,6 +3,8 @@ layout: post
 title: Computer Networking. Part 1.
 ---
 
+**Application layer.**
+
 I learned that a socket is *an interface between the application and transport layers*. It's like an API to deal with networks in your applications. 
 
 The port is *an ID of the network connection*. It helps the server to distinguish between different network applications that the server can run.
