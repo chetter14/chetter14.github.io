@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Computer Networking. Application Layer. Part 1.
+title: Computer Networking. Part 1.
 ---
 
 I learned that a socket is *an interface between the application and transport layers*. It's like an API to deal with networks in your applications. 
