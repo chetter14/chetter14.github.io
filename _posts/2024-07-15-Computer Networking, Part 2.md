@@ -15,7 +15,7 @@ First, do some initializations:
 ```
 max_clients_number = 3						# the max number of possible clients of server
 server_socket.listen(max_clients_number)
-mutex = Lock()								  # create a mutex to use for multithreading purposes
+mutex = Lock()							# create a mutex to use for multithreading purposes
 current_client_number = 0					# like an ID of a client
 ```
 
