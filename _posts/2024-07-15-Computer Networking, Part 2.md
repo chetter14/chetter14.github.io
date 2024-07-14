@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Computer Networking. Application Layer. Part 2.
+title: Computer Networking. Part 2.
 ---
 
 To continue the previous article, I learned about video streaming and techniques related to this - for example, the **DASH** (**D**ynamic **A**daptive **S**treaming over **H**TTP). The main idea is that there are many versions of videos with different qualities on the server. The client *dynamically (by measuring the available bandwidth) selects the appropriate version of the video* for itself.
