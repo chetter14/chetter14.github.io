@@ -11,7 +11,7 @@ A really interesting part of this chapter is socket programming, namely assignme
 
 Assignment #1 is to build a *web server that receives HTTP requests and sends back HTTP responses*. I will step through pieces of code that I find worth pointing out (I won't talk about how to send/receive messages with sockets, read files, and other simple functionality). The sources can be found [here](https://github.com/chetter14/computer-networking-assignments).
 
-First, do some initializations:
+First, I do some initializations:
 ```
 max_clients_number = 3						# the max number of possible clients of server
 server_socket.listen(max_clients_number)
