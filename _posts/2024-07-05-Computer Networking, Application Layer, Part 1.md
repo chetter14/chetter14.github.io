@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Computer Networking. Part 1.
+title: Computer Networking. Application Layer. Part 1.
 ---
 
 **Application layer.**
