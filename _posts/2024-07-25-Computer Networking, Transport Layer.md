@@ -20,7 +20,7 @@ total_rtt_sum = 0.0		# to be used for calculation of average rtt
 rtt_number = 0			# the same, + packet loss
 ```
 
-At first, I send some message to server and receive a reply:
+At first, I send some message to the server and receive a reply:
 ```
 send_time = datetime.now()
 message = "ping {number} {time}".format(number=i, time=send_time)
@@ -45,7 +45,7 @@ total_rtt_sum = total_rtt_sum + rtt
 rtt_number = rtt_number + 1
 ```
 
-Another fascinating application I made is [Heartbeat](https://github.com/chetter14/computer-networking-assignments/tree/main/udp-pinger). It checks whether the client is still connected or dropped out. Here is the rough client code where it sleeps for a while and sends the current time:
+Another fascinating application I made is the [Heartbeat](https://github.com/chetter14/computer-networking-assignments/tree/main/udp-pinger). It checks whether the client is still connected or dropped out. Here is a rough client code where it sleeps for a while and sends the current time:
 ```
 sleep_seconds = random.randint(0, 7)
 time.sleep(sleep_seconds)
