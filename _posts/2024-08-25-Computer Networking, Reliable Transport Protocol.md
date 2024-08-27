@@ -6,12 +6,12 @@ title: Computer Networking. Reliable Transport Protocol.
 One of the assignments in Chapter 3 is to implement your reliable transport protocol. There are two versions of this lab: the *Alternating-Bit-Protocol (so, stop-and-wait) and Go-Back-N*. At first, I will implement the Alternating-Bit-Protocol version and move on to the Go-Back-N (such an order is because of complexity: ABP is simpler than GBN). All the required data, resources, tasks, and details regarding this assignment can be found [here](https://gaia.cs.umass.edu/kurose_ross/programming/RDT/RDT_Implementing%20a%20Reliable%20Transport%20Protocol.html).
  
 So, whatever the protocol is used, *these cases should be taken into consideration and handled*:
-1) No corruption, no loss, no timeout (ideal case);
-2) No corruption, lost packet (from sender to receiver), timeout;
-3) No corruption, lost ACK (from receiver), timeout;
-4) No corruption, no loss, premature timeout (timeout happened before the ACK from the receiver was accepted);
-5) Corrupted packet (from sender), no loss, no timeout;
-6) Corrupted ACK (from receiver), no loss, no timeout.
+1. No corruption, no loss, no timeout (ideal case);
+2. No corruption, lost packet (from sender to receiver), timeout;
+3. No corruption, lost ACK (from receiver), timeout;
+4. No corruption, no loss, premature timeout (timeout happened before the ACK from the receiver was accepted);
+5. Corrupted packet (from sender), no loss, no timeout;
+6. Corrupted ACK (from receiver), no loss, no timeout.
 
 Complete sources and scenarios of handling 6 cases above are resided [here](https://github.com/chetter14/computer-networking-assignments/tree/main/RTP).
 
