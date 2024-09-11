@@ -3,7 +3,7 @@ layout: post
 title: OpenGL tutorial. Part 3.
 ---
 
-**Transformations part.**
+**Transformations.**
 
 It's fascinating how useful vectors, matrices, and related mathematical concepts are. The way you can combine and use them is fascinating as well.
 
@@ -38,7 +38,7 @@ In my `myShader.setTransformMatrix()` class function the `glUniformMatrix4fv()` 
 
 Eventually, *using such transformation matrices I can do everything with vertices` coordinates - scale the up/down, translate (move) to whatever positions, rotate around different axises, etc.*
 
-**Coordinate Systems part.**
+**Coordinate Systems.**
 
 Here I've added work with the camera and perspective that are required for 3D space.
 
@@ -85,7 +85,7 @@ void main()
 ```
 The order of multiplication is *vital* in matrices multiplication. It *reads from right to left*.
 
-**Camera part.**
+**Camera.**
 
 I've developed a Camera class that detects mouse movements to look around, keyword presses' to walk around, and functionality to zoom in and out with a scroll wheel.
 
