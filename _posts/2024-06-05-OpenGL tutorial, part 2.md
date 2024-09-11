@@ -3,7 +3,7 @@ layout: post
 title: OpenGL tutorial. Part 2.
 ---
 
-**Hello Triangle part.**
+**Hello Triangle.**
 
 A *graphics pipeline* is a process of transforming 3D coordinates into 2D pixels on your screen. This process is not that complicated. However, two important stages *must be defined by the programmer* - **vertex and fragment shaders** because they are not defined by the GPU by default.
 
@@ -73,11 +73,11 @@ unsigned int indices[] = {  // note that we start from 0!
 }; 
 ```
 
-**Shaders part.**
+**Shaders.**
 
 *Uniforms* are like global variables that you can access in the whole shader program and set their value from C++ code. I've not experienced a difficulty with other concepts in this chapter.
 
-**Textures part.**
+**Textures.**
 
 *Texture wrapping determines the "behavior" of the texture outside of its default scope*, which is (0,0)-(1,1). If, for some reason, your texture coordinates get outside of this default scope you set the way the texture is drawn there (repeated, mirror_repeated, etc.).
 
