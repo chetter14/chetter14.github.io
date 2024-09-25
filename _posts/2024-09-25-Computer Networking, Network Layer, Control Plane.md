@@ -4,6 +4,7 @@ title: Computer Networking. Network Layer. Control Plane.
 ---
 
 I have dealt with few tasks related to the topic of Network Layer (on OSI) here: *ICMP ping* and routing via the *distance-vector algorithm*. At first, about the ICMP ping program. My task is to write a piece of code that processes the received message from 'ping' command - prints out the delay time or that the request is timed out. I am talking about this part:
+
 ```
 ...
 echo_reply = struct.unpack("qqibbHHhff", recPacket)			# the received packet is in binary format
@@ -26,6 +27,7 @@ else:
 	return delta
 ...
 ```
+
 Also, I added: 1) an extra function to handle ICMP erros, and 2) printing out of min, max, average RTT (Round Trip Time) and the percentage of packet loss:
 ```
 ...
