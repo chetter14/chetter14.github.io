@@ -84,7 +84,7 @@ print("Packets lost - " + str(packets_lost / pings_number * 100) + "%")
 ...
 ```
 
-So, to the "Distributed Asynchronous Distance Vector Routing" application. The whole task description can be found [here](https://gaia.cs.umass.edu/kurose_ross/programming/DV/Programming%20Assignment%201.html). Although I developed 2 functions - 'rtinit()' and 'rtupdate()' - for each node in the graph, I will show the code of the 0 node because the logic stays the same despite the node number (except for distance values):
+So, to the "Distributed Asynchronous Distance Vector Routing" application. The whole task description can be found [here](https://gaia.cs.umass.edu/kurose_ross/programming/DV/Programming%20Assignment%201.html). Although I developed 2 functions - `rtinit()` and `rtupdate()` - for each node in the graph, I will show the code of the 0 node because the logic stays the same despite the node number (except for distance values):
 ```
 static void notifyNeighboringNodes()
 {
@@ -162,4 +162,4 @@ void rtupdate0(rcvdpkt)
 	}
 }
 ```
-I should note that 'rtinit()' and 'rtupdate()' functions are written separetely for each node number because it's the way the task asks to do it. In real circumstances, the code should be written once to avoid duplication of code and improve scalability of the project.
+I should note that `rtinit()` and `rtupdate()` functions are written separetely for each node number because it's the way the task asks to do it. In real circumstances, the code should be written once to avoid duplication of code and improve scalability of the project.
