@@ -9,7 +9,7 @@ After getting the environment ready I got to the task - *"Implement an efficient
 
 $$ x = y; $$
 
-To start, we have to calculate our block length and the amount of blocks that we are going to split our array into. The *block length is a square root of an array size* rounded to an integer. But I *round* the block length value to *the value of the power of two*. The point is the following: the `block_len` value is used frequently in calculations (namely, divisions) and if the `block_len` value is, say, $333$ (for a large input array), then calculations *would be slow* and optimal performance won't be achieved. But with a value like $\`256\`$ divisions *go faster* (because it's shift right operation).
+To start, we have to calculate our block length and the amount of blocks that we are going to split our array into. The *block length is a square root of an array size* rounded to an integer. But I *round* the block length value to *the value of the power of two*. The point is the following: the `block_len` value is used frequently in calculations (namely, divisions) and if the `block_len` value is, say, $$333$$ (for a large input array), then calculations *would be slow* and optimal performance won't be achieved. But with a value like $$256$$ divisions *go faster* (because it's shift right operation).
 ```
 uint block_len = GetClosestPowerTwo(static_cast<int>(std::sqrt(size)));
 uint blocks_amount = (size + block_len - 1) / block_len;
