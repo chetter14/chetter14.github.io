@@ -13,7 +13,7 @@ uint block_len = GetClosestPowerTwo(static_cast<int>(std::sqrt(size)));
 uint blocks_amount = (size + block_len - 1) / block_len;
 ```
 
-I want 'Update()' operation to be $$O(1)$$ and I made it this way:
+I want `Update()` operation to be $$O(1)$$ and I made it this way:
 ```
 void Update(int index, int value) {
 	if (arr_[index] == value) {  // Nothing changes
@@ -33,7 +33,7 @@ void Update(int index, int value) {
 	}
 ```
 
-The 'Get()' operation is $$O(sqrt{n})$$ now. In few words, the algorithm is to process the leftmost partial block element by element, jump over full blocks in between (handling them somehow), and process the rightmost partial block:
+The `Get()` operation is $$O(sqrt{n})$$ now. In few words, the algorithm is to process the leftmost partial block element by element, jump over full blocks in between (handling them somehow), and process the rightmost partial block:
 ```
 int Get(uint left, uint right, uint key) {
     uint zero_count = 0;
