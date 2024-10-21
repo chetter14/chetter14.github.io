@@ -7,15 +7,13 @@ So, in my Master's program, I took a course *"Advanced Algorithms and Data Struc
 
 After getting the environment ready I got to the task - *"Implement an efficient data structure that allows you to modify array elements and compute the index of the k-th zero from the left in a given segment of the array"*. So, the input is *the array you work with and the queries (update, get) you handle on this array*. The general solution to this problem can be achieved by **sqrt-decomposition**. I am going to show the crucial parts of my solution, all the code base is resided [here](https://github.com/chetter14/algocont/tree/labs).
 
-$$ x = y; $$
-
 To start, we have to calculate our block length and the amount of blocks that we are going to split our array into. The *block length is a square root of an array size* rounded to an integer. But I *round* the block length value to *the value of the power of two*. The point is the following: the `block_len` value is used frequently in calculations (namely, divisions) and if the `block_len` value is, say, $$333$$ (for a large input array), then calculations *would be slow* and optimal performance won't be achieved. But with a value like $$256$$ divisions *go faster* (because it's shift right operation).
 ```
 uint block_len = GetClosestPowerTwo(static_cast<int>(std::sqrt(size)));
 uint blocks_amount = (size + block_len - 1) / block_len;
 ```
 
-I want 'Update()' operation to be $O(1)$ and I made it this way:
+I want 'Update()' operation to be $$O(1)$$ and I made it this way:
 ```
 void Update(int index, int value) {
 	if (arr_[index] == value) {  // Nothing changes
@@ -35,7 +33,7 @@ void Update(int index, int value) {
 	}
 ```
 
-The 'Get()' operation is $O(sqrt{n})$ now. In few words, the algorithm is to process the leftmost partial block element by element, jump over full blocks in between (handling them somehow), and process the rightmost partial block:
+The 'Get()' operation is $$O(sqrt{n})$$ now. In few words, the algorithm is to process the leftmost partial block element by element, jump over full blocks in between (handling them somehow), and process the rightmost partial block:
 ```
 int Get(uint left, uint right, uint key) {
     uint zero_count = 0;
