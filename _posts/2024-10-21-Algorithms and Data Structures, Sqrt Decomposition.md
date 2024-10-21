@@ -33,7 +33,7 @@ void Update(int index, int value) {
 	}
 ```
 
-The `Get()` operation is $$O(sqrt{n})$$ now. In few words, the algorithm is to process the leftmost partial block element by element, jump over full blocks in between (handling them somehow), and process the rightmost partial block:
+The `Get()` operation is $$O(n^(1/2))$$ now. In few words, the algorithm is to process the leftmost partial block element by element, jump over full blocks in between (handling them somehow), and process the rightmost partial block:
 ```
 int Get(uint left, uint right, uint key) {
     uint zero_count = 0;
