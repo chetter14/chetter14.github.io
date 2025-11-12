@@ -30,6 +30,7 @@ The C++ compiler path is hardcoded for my local development setup for now â€” Iâ
 One more interesting part of the *Makefile* is the additional compilation options:
 
 1) `-fmodule-output=Vector.pcm` - used when building the `.cppm` file (similar to a traditional header) to specify the name of the **Compiled Module Interface (CMI)**, which will then be used when building `.cpp` files such as the sample.
+
 2) `-fprebuilt-module-path=.` - specifies the location of the CMI, allowing the sample (or any other file) to *import* the module and use its functionality.
 
 In short, it means:
