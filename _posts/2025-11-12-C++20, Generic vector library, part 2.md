@@ -128,6 +128,18 @@ For the operators `+`, `-`, `+=`, and `-=`, I used the `Arithmetic` concept to e
   // The same pattern is used for operator- and operator-=
 ```
 
+In the `main.cpp` file, I added a series of static assertions to verify that the concepts work as intended:
+```
+static_assert(RealType<float>);
+static_assert(RealType<int>);
+static_assert(RealType<double>);
+static_assert(!RealType<std::string>);
+static_assert(!RealType<std::tuple<double, int>>);
+// Other static_assert's with concepts
+```
+
+Additionally, in `main.cpp`, I wrote several logical operations on `Vector` objects to demonstrate their functionality and usage.
+
 I believe I have successfully implemented everything I set out to do, focusing on **concepts and template constraints**. I also successfully integrated **C++20 modules**, which is a great achievement.
 
 There is certainly room for improvement and further modifications - such as adding a `Matrix` class composed of `Vector` objects or extending the set of operations on `Vector`. However, for now, I consider this project complete.
