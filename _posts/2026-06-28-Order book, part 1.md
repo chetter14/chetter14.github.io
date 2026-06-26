@@ -17,7 +17,7 @@ using Price = unsigned int;
 
 How am I going to store bids and asks efficiently, so that it doesn't consume much memory, doesn't degrade the performance, and still presents a solution for the problem? I came to the idea of using an array, where **each index of this array is a price**. 
 
-A bunch of advantages from having an array here:  
+A couple of advantages from having an array here:  
 1) as I understand, most operations are done on the intersection of buy and sell prices. In array, these cells are going to be near each other. Such a placement in memory is *cache-friendly*.
 2) *O(1)* access complexity.
 
@@ -26,4 +26,24 @@ Even though the array seems good here in a *performance* sense, what about memor
 constexpr std::size_t MAX_PRICE_VALUE = 9999U, MIN_PRICE_VALUE = 1U;
 ```
 
-So, the array is going to be *preallocated* and *stay the same size* during the whole execution of program. But what does this array store exactly? 
+So, the array is going to be *preallocated* and *stay the same size* during the whole execution of program. But what does this array store exactly? How should I store the orders with the same price?
+
+The only operations I'll be doing with the orders at a specific price: *adding and removing*. And *the order of insertion and removal is important*, because if I have a bunch of bids and an ask is coming, then the most old bid has to processed first. Also, I don't need to access a random order at the price, it's just not required for the problem I'm trying to solve.
+
+I think a logical solution for this is a **queue of orders**. If a new order arrives, then it's either inserted into the end of the queue, or processed from the start (the oldest ones). I have doubts about such a choice though, the queue is *not cache-friendly* as an array, so I guess it can effect the performance negatively.
+```
+  /**
+  * @brief Array of prices that holds bids and asks.
+  * 
+  */
+  std::array<std::queue<Order>, MAX_PRICE_VALUE + 1> prices;
+```
+
+Also, it's a vital part to take care of executing orders if they match - when bid and ask have the same price. For such cases I added **bids start index** and **asks start index**. Basically, these variables are *prices of the highest bid and the lowest ask*. I was thinking about using iterators instead of plain numbers, but in my case I need the exact price of the top-most bid and the bottom-most ask. Iterators are just not enough for handling the intersection of prices of bids and asks.
+```
+  /**
+   * @brief Take care of top bids price and bottom asks price.
+   * 
+   */
+  Price bidsStart{MIN_PRICE_VALUE}, asksStart{MAX_PRICE_VALUE};
+```
