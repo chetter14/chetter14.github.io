@@ -18,7 +18,9 @@ using Price = unsigned int;
 How am I going to store bids and asks efficiently, so that it doesn't consume much memory, doesn't degrade performance, and still provides a solution to the problem? I came to the idea of using an array, where **each index of this array is a price**.
 
 A couple of advantages of having an array here:
+
 1) As I understand it, most operations are done at the intersection of buy and sell prices. In an array, these cells are going to be near each other. Such a placement in memory is *cache-friendly*.
+
 2) *O(1)* access complexity.
 
 Even though the array seems good here in a *performance* sense, what about memory? Will it be reallocated every time a new, higher price arrives? I thought it would be a problem, so I made a second assumption here - **the price is going to be limited at the top by some value**. I think it's a huge oversimplification on my part, but again, I'm not trying to make a real-world-like order book that can be used in real projects, at least for now. Maybe in the future I'm going to implement this part "correctly".
@@ -51,6 +53,7 @@ It's also a vital part to take care of executing orders if they match - when a b
 About the interface that the order book has to provide. At first, I thought of just two functions:
 
 1) **apply the order**.
+
 2) **print out the whole order book**.
 
 During the process of implementing these functions, I added two more: getting **the total number of present orders** and getting **the orders at a specific price**. I don't think they are going to be used in the project as I see it, but nonetheless, I added them for testing and possible future extensions.
