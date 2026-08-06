@@ -3,11 +3,11 @@ layout: post
 title: Order book. Part 3.
 ---
 
-So, I began implementing two other modules for my program: **order generator** and **logger**. I'm going to start with the first one.
+So, I began implementing two other modules for my program: the **order generator** and the **logger**. I'm going to start with the first one.
 
-In order generator, I think the most important part to know is how **price** values (of incoming orders) are generated. I made it in a form of **normal distribution (a Gaussian bell curve)**. This way buy/sell orders are executed mostly in one place. In a case like that, just a few orders will sit in order book and wait for the suitable bid/ask. Most of the time bids/asks are satisfied and order book is under highload.
+In the order generator, I think the most important part to understand is how the **price** values (of incoming orders) are generated. I made it in the form of a **normal distribution (a Gaussian bell curve)**. This way, buy/sell orders are mostly executed around one price point. In a case like that, only a few orders will sit in the order book waiting for a suitable bid/ask. Most of the time bids/asks are matched, and the order book is under high load.
 
-Other values that have to be generated for **ob::InputOrder** structure are:
+The other values that have to be generated for the **ob::InputOrder** structure are:
 ```
 struct InputOrder {
   UserId userId;
@@ -17,7 +17,7 @@ struct InputOrder {
 };
 ```
 
-I made a class **OrderGenerator** with a constructor that expects a seed. The constructor initializes private fields of class. These fields are a **generator engine** used and distributions for all the values - **userId, price, amount, type**. 
+I made a class, **OrderGenerator**, with a constructor that expects a seed. The constructor initializes the private fields of the class. These fields are the **generator engine** and the distributions for all the values: **userId, price, amount, type**.
 ```
 class OrderGenerator {
  public:
@@ -44,7 +44,7 @@ class OrderGenerator {
 };
 ```
 
-There is one vital function in this class to generate a random input order object - `generateOrder()`. I guess, the description of function is self-contained.
+There is one key function in this class for generating a random input order object: `generateOrder()`. I think the description of the function speaks for itself.
 ```
   /**
   * @brief Generates an input order with random values:
@@ -63,7 +63,7 @@ There is one vital function in this class to generate a random input order objec
   ob::InputOrder generateOrder();
 ```
 
-For generating random values, I defined helper functions `nextUserId(), nextPrice(), nextAmount(), nextOrderType()`, which are called by `generateOrder()`:
+To generate the random values, I defined the helper functions `nextUserId()`, `nextPrice()`, `nextAmount()`, and `nextOrderType()`, which are called by `generateOrder()`:
 ```
 ob::InputOrder og::OrderGenerator::generateOrder() {
   return ob::InputOrder{.userId = nextUserId(),
@@ -96,13 +96,13 @@ ob::OrderType og::OrderGenerator::nextOrderType() {
 }
 ```
 
-The list of tests I added for the **order generator** module (think, I won't provide source code for it here):
-- The values of *userId, price, amount, and orderType* are always in range.
+The list of tests I added for the **order generator** module (I don't think I'll provide the source code for them here):
+- The values of *userId*, *price*, *amount*, and *orderType* are always in range.
 - The same seed produces the same sequence.
-- After a large number of iterations, an average generated price value is going to be close to the one specified in normal distribution.
-- After a large number of iterations, both order types (*buy* and *sell*) are generated almost equal number of times.
+- After a large number of iterations, the average generated price is close to the one specified in the normal distribution.
+- After a large number of iterations, both order types (*buy* and *sell*) are generated an almost equal number of times.
 
-Getting to the **logger**. The first thing I did here is added an abstract class `ExecutionSink`. It acts like a destination/logger/sink that is going to do something on execution of orders:
+Now on to the **logger**. The first thing I did here was add an abstract class, `ExecutionSink`. It acts as a destination/logger/sink that does something when orders are executed:
 ```
 namespace ob {
 class ExecutionSink {
@@ -113,7 +113,7 @@ class ExecutionSink {
 }  // namespace ob
 ```
 
-I modified an `OrderBook` class a bit to set an execution sink and write to it at the execution of orders:
+I modified the `OrderBook` class a bit so that it can take an execution sink and write to it when orders are executed:
 ```
 class OrderBook {
  public:
@@ -144,9 +144,9 @@ void ob::OrderBook::executeOrdersAtPrice(...) {
 }
 ```
 
-This way I can set a whatever sink that implements `onExecuted(const ExecutedOrder&)`. It will help a lot at integration tests.
+This way I can set any sink that implements `onExecuted(const ExecutedOrder&)`. It will help a lot with integration tests.
 
-Now to `Logger` class. It inherits from `ob::ExecutionSink` and overrides `onExecuted()` by just redirecting to its internal function for writing a log. 
+Now to the `Logger` class. It inherits from `ob::ExecutionSink` and overrides `onExecuted()` by simply redirecting to its internal function for writing a log entry.
 ```
 class Logger : public ob::ExecutionSink {
   ...
@@ -160,7 +160,7 @@ class Logger : public ob::ExecutionSink {
 };
 ```
 
-As for creation of this logger, this `Logger` class defines a static method that creates an instance of the logger. If it fails (at opening the log file), an error is returned:
+As for the creation of this logger, the `Logger` class defines a *static* method that creates an instance of the logger. If it fails (when opening the log file), an error is returned:
 ```
 class Logger : public ob::ExecutionSink {
  private:
@@ -185,7 +185,7 @@ ob_logger::Logger::create(const std::filesystem::path& path) {
 };
 ```
 
-Also, all the operations of copy and move are restricted:
+All copy and move operations are *deleted* as well:
 ```
   Logger(const Logger&) = delete;
   Logger& operator=(const Logger&) = delete;
@@ -194,7 +194,7 @@ Also, all the operations of copy and move are restricted:
   Logger& operator=(Logger&&) = delete;
 ```
 
-So, what `recordExecutedOrder()` does is take a mutex, call a helper function for formatting a `const ob::ExecutedOrder& order` into a string, and print this string out to the log file. A helper function is `formatExecutedOrder()`. The format it uses is specified below in body of the function:
+So, what `recordExecutedOrder()` does is lock a mutex, call a helper function to format the `const ob::ExecutedOrder& order` into a string, and write this string to the log file. The helper function is `formatExecutedOrder()`. The format it uses is specified in the body of the function below:
 ```
 std::string ob_logger::formatExecutedOrder(
     const ob::ExecutedOrder& order,
@@ -225,3 +225,10 @@ For logger I wrote these unit-tests:
 - `formatExecutedOrder()` produces an expected line.
 - Behavior of `ob_logger::Logger::create()` with correct and wrong path.
 - Record a number of logs to file, then read the file string by string, check whether strings match the *regex*, and total number of strings is equal to the number of strings written.
+
+For the logger I wrote these unit tests:
+- `formatExecutedOrder()` produces the expected line.
+- The behavior of `ob_logger::Logger::create()` with a valid and an invalid path.
+- Write a number of log entries to a file, then read the file line by line, check that the lines match the regex, and that the total number of lines equals the number written.
+
+That's it for the **order generator** and **logger** modules.
