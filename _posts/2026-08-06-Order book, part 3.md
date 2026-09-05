@@ -221,11 +221,6 @@ void ob_logger::Logger::recordExecutedOrder(const ob::ExecutedOrder& order) {
 }
 ```
 
-For logger I wrote these unit-tests:
-- `formatExecutedOrder()` produces an expected line.
-- Behavior of `ob_logger::Logger::create()` with correct and wrong path.
-- Record a number of logs to file, then read the file string by string, check whether strings match the *regex*, and total number of strings is equal to the number of strings written.
-
 For the logger I wrote these unit tests:
 - `formatExecutedOrder()` produces the expected line.
 - The behavior of `ob_logger::Logger::create()` with a valid and an invalid path.
