@@ -6,6 +6,7 @@ title: Order book. Part 4.
 Let's *connect all the modules together* in a **sample** program. The sample performs the following straightforward sequence of steps:
 
 1) It initializes a logger, an order book, and an order generator.
+
 2) In an infinite loop, it generates an order, applies it, and sleeps for 5 seconds. The sleep is there for presentation purposes only and should be removed in a real program.
 
 The implementation is small enough that I can put the whole `main()` here:
